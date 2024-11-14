@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skaderapport Management</title>
+  <link rel="stylesheet" href="/skaderapport.css">
+</head>
+<body>
+<h1>Skaderapporter</h1>
+<header>
+  <nav>
+    <div class="header-button-container">
+      <a class="header-button" href="/bil">Fleet</a>
+      <a class="header-button" href="/lejeaftaler">Lejeaftaler</a>
+      <a class="header-button" href="/skaderapporter">Skaderapporter</a>
+      <a class="header-button" href="/users">User Management</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Skaderapporter Table -->
+<h2>Skaderapporter Oversigt</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Bil Vognnummer</th>
+    <th>User ID</th>
+    <th>Ekstra KM</th>
+    <th>Total Skadepris (DKK)</th>
+    <th>Oprettet Dato</th>
+    <th>Opdater Skaderapport</th>
+    <th>Slet Skaderapport</th>
+  </tr>
+  <tr th:each="skaderapport : ${skaderapporter}">
+    <td th:text="${skaderapport.id}"></td>
+    <td th:text="${skaderapport.vognnummer}"></td>
+    <td th:text="${skaderapport.userId}"></td>
+    <td th:text="${skaderapport.xtraKm}"></td>
+    <td th:text="${skaderapport.totalSkadePris}"></td>
+    <td th:text="${skaderapport.createdAt}"></td>
+    <td>
+      <!-- Update Skaderapport Form -->
+      <form th:action="@{/skaderapporter/update(id=${skaderapport.id})}" method="post">
+        <input type="number" name="xtraKm" th:value="${skaderapport.xtraKm}" placeholder="Ekstra KM">
+        <input type="number" name="totalSkadePris" th:value="${skaderapport.totalSkadePris}" placeholder="Total Skadepris" required step="0.01">
+        <button type="submit">Opdater</button>
+      </form>
+    </td>
+    <td>
+      <form th:action="@{/skaderapporter/delete(id=${skaderapport.id})}" method="post">
+        <button type="submit">Slet</button>
+      </form>
+    </td>
+  </tr>
+</table>
+
+<!-- Create Skaderapport Form -->
+<h2>Opret Ny Skaderapport</h2>
+<form th:action="@{/skaderapporter}" method="post">
+
+  <select name="vognnummer" required>
+    <option value="" disabled selected>Vælg bil</option>
+    <option th:each="bil : ${biler}" th:value="${bil.vognnummer}" th:text="${bil.model}"></option>
+  </select>
+
+  <p></p>
+
+  <select name="users" required>
+    <option value="" disabled selected>Vælg bruger</option>
+    <option th:each="user : ${users}" th:value="${user.user_id}" th:text="${user.user_navn}"></option>
+  </select>
+
+  <p></p>
+
+  <label for="xtraKm">Ekstra KM:</label>
+  <input type="number" id="xtraKm" name="xtraKm">
+
+  <label for="totalSkadePris">Total Skadepris (DKK):</label>
+  <input type="number" id="totalSkadePris" name="totalSkadePris" required step="0.01">
+
+  <button type="submit" class="opret-skaderapport-knap">Opret Skaderapport</button>
+</form>
+
+
+<footer>
+  <nav>
+    <div class="footer-button-container">
+      <a class="footer-button" href="/bil">Fleet</a>
+      <a class="footer-button" href="/lejeaftaler">Lejeaftaler</a>
+      <a class="footer-button" href="/skaderapporter">Skaderapporter</a>
+      <a class="footer-button" href="/users">User Management</a>
+    </div>
+  </nav>
+</footer>
+
+</body>
+</html>
