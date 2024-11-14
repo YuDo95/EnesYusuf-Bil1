@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lejeaftale Management</title>
+    <link rel="stylesheet" href="lejeaftaler.css">
+</head>
+<body>
+<h1>Lejeaftale Management</h1>
+
+<nav>
+    <div class="header-button-container">
+        <a class="header-button" href="/bil">Fleet</a>
+        <a class="header-button" href="/lejeaftaler">Lejeaftaler</a>
+        <a class="header-button" href="/skaderapporter">Skaderapporter</a>
+        <a class="header-button" href="/users">User Management</a>
+    </div>
+</nav>
+
+<h2>Lejeaftale Oversigt</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Vognnummer</th>
+        <th>UserID</th>
+        <th>Opdater Lejeaftale</th>
+    </tr>
+    <tr th:each="lejeaftale : ${lejeaftaler}">
+        <td th:text="${lejeaftale.lejeaftaleId}"></td>
+        <td th:text="${lejeaftale.bilVognnummer}"></td>
+        <td th:text="${lejeaftale.userId}"></td>
+        <td>
+            <form th:action="@{/lejeaftaler/update/{id}(id=${lejeaftale.lejeaftaleId})}" method="post">
+                <input type="hidden" name="id" th:value="${lejeaftale.lejeaftaleId}">
+
+                <label for="startdato">Startdato:</label>
+                <input type="date" id="startdato" name="startdato" th:value="${lejeaftale.startdato}" required>
+
+                <label for="slutdato">Slutdato:</label>
+                <input type="date" id="slutdato" name="slutdato" th:value="${lejeaftale.slutdato}" required>
+
+                <label for="pris">Pris (DKK):</label>
+                <input type="number" id="pris" name="pris" th:value="${lejeaftale.pris}" required step="0.01">
+
+                <label for="aftaltKm">Aftalt KM:</label>
+                <input type="number" id="aftaltKm" name="aftaltKm" th:value="${lejeaftale.aftaltKm}" required>
+
+                <label for="slutKm">Slut KM (optional):</label>
+                <input type="number" id="slutKm" name="slutKm" th:value="${lejeaftale.slutKm}" placeholder="Slut KM">
+
+                <!-- Overkoerte KM checkbox -->
+                <label for="overkoerteKm">Overkørte KM?</label>
+                <input type="checkbox" id="overkoerteKm" name="overkoerteKm" value="true" th:checked="${lejeaftale.overkoerteKm}">
+
+                <button type="submit" class="opdater-lejeaftale-knap">Opdater</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+<h2>Opret Lejeaftale</h2>
+<form th:action="@{/lejeaftaler/create}" method="post">
+    <select name="vognnummer" required>
+        <option value="" disabled selected>Vælg bil</option>
+        <option th:each="bil : ${biler}" th:value="${bil.vognnummer}" th:text="${bil.model}"></option>
+    </select>
+
+    <p></p>
+
+    <select name="users" required>
+        <option value="" disabled selected>Vælg bruger</option>
+        <option th:each="user : ${users}" th:value="${user.user_id}" th:text="${user.user_navn}"></option>
+    </select>
+
+    <input type="date" name="startdato" placeholder="Startdato" required>
+    <input type="date" name="slutdato" placeholder="Slutdato" required>
+    <input type="number" name="pris" placeholder="Lejeaftale Pris (DKK)" required step="0.01" min="0">
+    <input type="number" name="aftaltKm" placeholder="Aftalt KM" required min="0">
+    <button type="submit" class="opret-lejeaftale-knap">Opret Lejeaftale</button>
+</form>
+
+<!-- Delete Lejeaftale Form -->
+<h2>Slet Lejeaftale</h2>
+<form action="/lejeaftaler/delete" method="post">
+    <label for="lejeaftaleId">Vælg den lejeaftale som du vil slette:</label>
+    <select name="lejeaftaleId" id="lejeaftaleId" required>
+        <option value="" disabled selected>Vælg lejeaftale</option>
+        <option th:each="lejeaftale : ${lejeaftaler}" th:value="${lejeaftale.lejeaftaleId}" th:text="${lejeaftale.lejeaftaleId}"></option>
+    </select>
+    <button type="submit" class="slet-lejeaftale-knap">Slet Lejeaftale</button>
+</form>
+
+<footer>
+    <nav>
+        <div class="footer-button-container">
+            <a class="button" href="/bil">Fleet</a>
+            <a class="button" href="/lejeaftaler">Lejeaftaler</a>
+            <a class="button" href="/skaderapporter">Skaderapporter</a>
+            <a class="button" href="/users">User Management</a>
+        </div>
+    </nav>
+</footer>
+</body>
+</html>
