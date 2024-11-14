@@ -1,0 +1,195 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 2.5em;
+    color: #080909;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #050505;
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Form two-column layout */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-group {
+    flex: 1;
+    margin: 2px 10px; /* Reduced margin between form groups */
+    display: block;
+    font-weight: bold;
+    padding-bottom: 3px; /* Adds space between text and underline */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    padding-bottom: 3px; /* Adds space between text and underline */
+    border-bottom: 2px solid #007bff; /* Blue underline */
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px; /* Adjusted padding for alignment */
+    margin-top: 5px; /* Adds spacing between the input and label */
+}
+
+
+/* Table styles */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th:nth-child(2), th:nth-child(3) {
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Form styles */
+form {
+    width: 86%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+    width: calc(100% - 10px); /* Adjusted width to account for padding */
+    padding: 8px; /* Slightly reduced padding */
+    margin: 5px 0; /* Reduced vertical margin */
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Button styles */
+.opdater-bil-knap {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.opdater-bil-knap:hover {
+    background-color: #0056b3;
+}
+
+.opret-bil-knap {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.opret-bil-knap:hover {
+    background-color: #218838;
+}
+
+.slet-bil-knap {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.slet-bil-knap:hover {
+    background-color: #c82333;
+}
+
+
+/* Header and footer button container */
+.header-button-container,
+.footer-button-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.header-button {
+    font-size: 18px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+}
