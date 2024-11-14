@@ -1,0 +1,202 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background */
+    color: #343a40; /* Dark text color */
+    line-height: 1.6;
+}
+
+/* Header styles */
+h1 {
+    text-align: center; /* Centered heading */
+    margin: 20px 0; /* Margin around heading */
+    font-size: 2.5em; /* Size of the heading */
+    color: #080909; /* Dark grey color */
+}
+
+h2 {
+    font-size: 1.8em; /* Subheading size */
+    color: #050505; /* Grey color */
+    text-align: center; /* Center alignment */
+    margin: 20px 0; /* Margin for spacing */
+}
+
+/* Table styles */
+table {
+    width: 90%; /* Table width */
+    margin: 20px auto; /* Center table with auto margins */
+    border-collapse: collapse; /* Collapse borders */
+    background-color: #ffffff; /* White background for table */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Clip overflow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+/* Table header and cell styles */
+th, td {
+    padding: 12px 15px; /* Padding for cells */
+    text-align: left; /* Left alignment */
+}
+
+th {
+    background-color: #007bff; /* Blue header background */
+    color: white; /* White text */
+}
+
+th:nth-child(2) {
+    text-align: center;
+    padding-left: 200px;
+}
+
+th:nth-child(3) {
+    text-align: right;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light grey for even rows */
+}
+
+tr:hover {
+    background-color: #e9ecef; /* Hover effect for rows */
+}
+
+img {
+    margin-left: 100px;
+}
+
+/* Form styles */
+form {
+    width: 90%; /* Form width */
+    max-width: 700px; /* Maximum width */
+    margin: 20px auto; /* Center form */
+    padding: 20px; /* Padding for form */
+    border: 1px solid #ced4da; /* Border around form */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #ffffff; /* White background for form */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow */
+}
+
+.update-form-container {
+    float: right; /* Align the form container to the right */
+    width: 70%; /* Set a width for the form */
+}
+
+
+/* Input styles */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select {
+    width: calc(100% - 20px); /* Full width with padding */
+    padding: 10px; /* Padding for inputs */
+    margin: 10px 0; /* Margin for spacing */
+    border: 1px solid #ced4da; /* Border around inputs */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size for inputs */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow for input fields */
+}
+
+/* Focus styles */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+select:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+}
+
+
+/* Button styles */
+.opdater-bruger-knap {
+    background-color: #007bff; /* Blue button */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.opdater-bruger-knap:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.opret-bruger-knap {
+    background-color: #28a745; /* Green button */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.opret-bruger-knap:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.slet-bruger-knap {
+    background-color: #dc3545; /* Red button */
+    color: white; /* White text */
+    padding: 10px 15px; /* Padding for button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 16px; /* Font size */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.slet-bruger-knap:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Media query for responsive design */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2em; /* Smaller header size */
+    }
+
+    h2 {
+        font-size: 1.5em; /* Smaller subheading size */
+    }
+
+    table {
+        width: 100%; /* Full width for tables */
+    }
+}
+
+.header-button-container{
+    display: flex; /* Arrange header buttons in a row */
+    justify-content: center; /* Center the buttons */
+    gap: 15px; /* Space between header buttons */
+    margin-bottom: 20px; /* Space below header buttons */
+}
+
+.header-button {
+    font-size: 18px; /* Increased font size */
+    color: white; /* Text color */
+    background-color: #007BFF; /* Button background color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 12px 20px; /* Increased padding for larger buttons */
+    text-decoration: none; /* Remove underline from links */
+    transition: background-color 0.3s; /* Smooth background color transition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow */
+}
+
+.header-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+footer {
+    text-align: center; }/* Center footer text */
