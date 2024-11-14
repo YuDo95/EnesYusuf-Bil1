@@ -1,5 +1,7 @@
 package dk.kea.enesyusufbil.repository;
 
+import dk.kea.enesyusufbil.model.Bil;
+
 import java.util.List;
 
 public interface BilRepository {

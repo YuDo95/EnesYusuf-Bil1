@@ -1,5 +1,6 @@
 package dk.kea.enesyusufbil.repository;
 
+import dk.kea.enesyusufbil.model.Bil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,22 +15,22 @@ public class BilRepositoryImpl implements BilRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
+    // Constructor, der injicerer JdbcTemplate for at muliggøre databaseoperationer
     @Autowired
     public BilRepositoryImpl(JdbcTemplate jdbcTemplate)
     {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
+    // Henter alle biler fra databasen
     @Override
     public List<Bil> findAll()
     {
         String sql = "SELECT * FROM bil";
-
         return jdbcTemplate.query(sql, new BilRowMapper());
     }
 
-
+    // Opretter en ny bil i databasen med de angivne felter
     @Override
     public void create(Bil bil)
     {
@@ -45,7 +46,7 @@ public class BilRepositoryImpl implements BilRepository {
                 "bil_co2Udledning, bil_km ," +
                 "udlejet," +
                 "imageURL) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(sql,
                 bil.getStelnummer(),
@@ -64,7 +65,7 @@ public class BilRepositoryImpl implements BilRepository {
         );
     }
 
-
+    // Opdaterer en eksisterende bil i databasen baseret på bilens vognnummer
     @Override
     public void update(Bil bil)
     {
@@ -101,20 +102,18 @@ public class BilRepositoryImpl implements BilRepository {
                 bil.getVognnummer());
     }
 
-
+    // Sletter en bil fra databasen baseret på vognnummeret
     @Override
     public void delete(int vognnummer)
     {
         String sql = "DELETE FROM bil WHERE bil_vognnummer = ?";
-
         jdbcTemplate.update(sql, vognnummer);
     }
 
-
-    // RowMapper for Bil
+    // RowMapper klasse for at mappe resultatsæt til Bil-objekter
     private static class BilRowMapper implements RowMapper<Bil>
     {
-
+        // Mapper en række fra ResultSet til et Bil-objekt
         public Bil mapRow(ResultSet rs, int rowNum) throws SQLException {
             Bil bil = new Bil();
             bil.setVognnummer(rs.getInt("bil_vognnummer"));
@@ -131,20 +130,20 @@ public class BilRepositoryImpl implements BilRepository {
             bil.setKm(rs.getInt("bil_km"));
             bil.setUdlejet(rs.getBoolean("udlejet"));
             bil.setImageUrl(rs.getString("imageURL"));
-
             return bil;
         }
     }
 
-    /* Bliver ikke brugt (endnu)
+    /* Metode der (ikke bruges endnu)
+    // Finder en bil baseret på vognnummer
+    // Returnerer bil-objektet, hvis fundet; ellers returnerer null
     @Override
     public Bil findById(int vognnummer) {
         String sql = "SELECT * FROM bil WHERE bil_vognnummer = ?";
         try {
             return jdbcTemplate.queryForObject(sql, new Object[]{vognnummer}, new BilRowMapper());
         } catch (EmptyResultDataAccessException e) {
-            return null; // or throw a custom exception
+            return null; // eller smid en brugerdefineret undtagelse
         }
     }*/
-
 }
