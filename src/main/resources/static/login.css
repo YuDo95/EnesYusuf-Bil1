@@ -1,0 +1,78 @@
+/* General body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa; /* Light background */
+    color: #343a40; /* Dark text color */
+    line-height: 1.6;
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    flex-direction: column; /* Stack elements vertically */
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2.5em; /* Big font size for heading */
+    color: #495057; /* Dark grey color */
+    margin-bottom: 20px; /* Margin below heading */
+    text-align: center; /* Center the text */
+    width: 100%; /* Full width to center correctly */
+}
+
+/* Form styles */
+form {
+    background-color: #ffffff; /* White background for form */
+    padding: 30px; /* Padding for form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Box shadow */
+    width: 300px; /* Fixed width for the form */
+    display: flex; /* Flexbox for form layout */
+    flex-direction: column; /* Stack form elements vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+/* Input styles */
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Full width */
+    padding: 15px; /* Padding for inputs */
+    margin: 10px 0; /* Margin for spacing */
+    border: 1px solid #ced4da; /* Border around inputs */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Font size for inputs */
+    transition: border-color 0.3s ease; /* Smooth transition */
+}
+
+/* Focus effect for inputs */
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove outline */
+}
+
+/* Button styles */
+.login-button {
+    background-color: #007bff; /* Blue button */
+    color: white; /* White text */
+    padding: 15px; /* Padding for button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 16px; /* Font size */
+    width: 100%; /* Full width */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+    margin-top: 10px; /* Margin above button */
+}
+
+/* Button hover effect */
+.login-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Error message styles */
+#error-message {
+    margin-top: 15px; /* Margin above error message */
+    text-align: center; /* Center alignment */
+}
